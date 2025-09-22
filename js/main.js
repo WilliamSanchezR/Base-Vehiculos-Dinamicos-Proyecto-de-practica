@@ -8,6 +8,11 @@
     const modeloInput = document.getElementById("modeloCar");
     const kilometrajeInput = document.getElementById("kilometrajeCar");
     const precioInput = document.getElementById("precioCar");
+    const carritoBtn = document.getElementById("carrito");
+    const remov = document.getElementById("carritos")
+    const panel = document.querySelector(".panel");
+    const contCarrito = document.querySelector('.cont-carrito');
+
 
     // Imagen por defecto (puedes cambiar la ruta a la que tengas en tu proyecto)
 
@@ -68,9 +73,10 @@
                 btnSuccess.textContent = "Comprar";
                 btnSuccess.setAttribute('id', 'btnCompra');
 
-                btnSuccess.addEventListener('click', () => {
-                    alert('Ya nos comunicaremos con usted');
-                });
+                    btnSuccess.addEventListener("click", () => {
+                        const newCardCarrito = createCardCarrito(vehiculo);
+                        contCarrito.appendChild(newCardCarrito);
+                    });
 
         // Botón eliminar
 
@@ -92,7 +98,7 @@
             card.appendChild(cardBody);
             col.appendChild(card);
 
-        // Retornamos el contenedor completo
+// Retornamos el contenedor completo
 
             return col;
 
@@ -101,10 +107,10 @@
 
 //  Evento submit del formulario
 
-    form.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // Tomamos valores de los inputs
+// Tomamos valores de los inputs
 
             const vehiculo = {
                 foto: fotoInput.value.trim(),
@@ -115,21 +121,20 @@
                 precio: precioInput.value.trim(),
             };
 
-        // Validación: si falta algún campo obligatorio
+// Validación: si falta algún campo obligatorio
 
-            if (!vehiculo.nombre || !vehiculo.marca || !vehiculo.modelo || 
-                !vehiculo.kilometraje || !vehiculo.precio) {
+            if (!vehiculo.nombre || !vehiculo.marca || !vehiculo.modelo || !vehiculo.kilometraje || !vehiculo.precio) {
                 alert("Todos los campos son obligatorios pato");
                 return;
             }
 
-        // Si no hay foto, usar la predeterminada
+// Si no hay foto, usar la predeterminada
 
             if (!vehiculo.foto) {
                 vehiculo.foto = defaultImg;
             }
 
-        // Crear y agregar tarjeta
+// Crear y agregar tarjeta
 
             const newCard = crearCard(vehiculo);
 
@@ -139,4 +144,104 @@
 
             form.reset();
     });
+
+// Botón de modo noche
+    const changeStyleBtn = document.getElementById("change-style");
+
+    changeStyleBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark-mode");
+
+        // Cambiar el texto del botón según el modo
+
+        if (document.body.classList.contains("dark-mode")) {
+
+            changeStyleBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+
+        } else {
+
+            changeStyleBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+
+        }
+
+    });
+
+//desde aca se empieza lo que es el panel para la tienda
+
+// Botones para abrir/cerrar el panel
+
+// Abrir panel
+
+    carritoBtn.addEventListener("click", () => {
+
+        panel.classList.add("active");
+
+    });
+
+// Cerrar panel
+
+    remov.addEventListener("click", () => {
+
+        panel.classList.remove("active");
+
+    });
+
+// Funcion que creara la tarjeta del producto en el panel
+
+function createCardCarrito(vehiculo) {
+
+// Contenedor principal de la tarjeta dentro del carrito
+
+    const cont = document.createElement("div");
+
+    cont.classList.add("row", "card-carrito", "mb-2", "p-2", "border");
+    
+// Columna de la imagen
+
+    const colImg = document.createElement("div");
+
+    colImg.classList.add("col-md-4");
+
+    const img = document.createElement("img");
+
+    img.classList.add("carrito-img", "w-100");
+
+    img.src = vehiculo.foto || "img/aventador.jpg"; // si no hay foto, usa la default
+
+    img.alt = vehiculo.nombre || "Vehículo";
+
+// Columna con la información
+
+    const colInfo = document.createElement("div");
+
+    colInfo.classList.add("col-md-6");
+
+    colInfo.innerHTML = `
+        <h3 class="card-title">${vehiculo.nombre}</h3>
+        <h4 class="card-subtitle text-muted">${vehiculo.marca}</h4>
+        <h2 class="text-success">$${vehiculo.precio}</h2>
+    `;
+
+// Botón eliminar
+
+    const btnEliminar = document.createElement("button");
+
+    btnEliminar.classList.add("btn", "btn-danger", "col-md-2");
+
+    btnEliminar.textContent = "X";
+
+// Cuando se da clic en eliminar, se borra solo este producto
+
+    btnEliminar.addEventListener("click", () => cont.remove());
+
+
+// Ensamblamos todo
+
+    colImg.appendChild(img);
+    cont.appendChild(colImg);
+    cont.appendChild(colInfo);
+    cont.appendChild(btnEliminar);
+
+    return cont; // devolvemos la tarjeta completa
+}
 
