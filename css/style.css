@@ -1,0 +1,163 @@
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+    font-family: 'Roboto', sans-serif;
+    background: #fdfdfd;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    }
+
+    h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 1rem;
+    position: relative;
+    letter-spacing: 0.5px;
+    }
+
+    h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #065f46;
+    margin-top: 5px;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+    }
+
+    h2:hover::after {
+    width: 70px;
+    }
+
+    #form {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #form:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    }
+
+    #form .form-control {
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    transition: all 0.3s ease;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    }
+
+    #form .form-control:focus {
+    border-color: #93c5fd;
+    box-shadow: 0 0 10px rgba(147, 197, 253, 0.4);
+    transform: scale(1.02);
+    }
+
+    #btn-add {
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-weight: 600;
+    border: none;
+    background: linear-gradient(135deg, #205c4b9f, #065f46);
+    color: #fff;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    }
+
+    #btn-add:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(165, 180, 252, 0.4);
+    }
+
+    .item-vehiculo .card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    }
+
+    .item-vehiculo .card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    }
+
+    .item-vehiculo img {
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    }
+
+    .item-vehiculo:hover img {
+    transform: scale(1.05);
+    }
+
+    .card-body h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #6366f1;
+    margin-bottom: 8px;
+    }
+
+    .card-body h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #6b7280;
+    font-weight: 400;
+    }
+
+    .card-body h2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #10b981;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+    }
+
+    .card-body h2:hover {
+    transform: scale(1.08);
+    }
+
+    .card-body .btn {
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 8px 14px;
+    transition: all 0.3s ease;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.9rem;
+    }
+
+    .card-body .btn-success {
+    background: #6ee7b7;
+    border: none;
+    color: #065f46;
+    }
+
+    .card-body .btn-success:hover {
+    background: #34d399;
+    transform: translateY(-2px) scale(1.05);
+    }
+
+    .card-body .btn-danger {
+    background: #fca5a5;
+    border: none;
+    color: #7f1d1d;
+    }
+
+    .card-body .btn-danger:hover {
+    background: #f87171;
+    transform: translateY(-2px) scale(1.05);
+    }
