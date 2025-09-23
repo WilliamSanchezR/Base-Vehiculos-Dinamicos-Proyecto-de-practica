@@ -65,7 +65,7 @@
 
                 contBtns.classList.add("d-flex", "justify-content-between", "mt-3");
 
-        // Botón de compra
+        // Botón de compra, este boton de compra cada vez que se oprime ejecutara una funcion que agregara este producto clickeado al panel lateral y se sumara el valor que el tenga mas lo demas que el usuario tenga en el carrito
 
             const btnSuccess = document.createElement("button");
 
@@ -76,6 +76,7 @@
                     btnSuccess.addEventListener("click", () => {
                         const newCardCarrito = createCardCarrito(vehiculo);
                         contCarrito.appendChild(newCardCarrito);
+                        updateTotal();
                     });
 
         // Botón eliminar
@@ -86,7 +87,9 @@
                 btnDanger.textContent = "Eliminar";
 
             // Evento eliminar
-            btnDanger.addEventListener("click", () => col.remove());
+            btnDanger.addEventListener("click", () => {
+                col.remove();
+    });
 
         // Ensamblamos dentro del nodo padre sus nodos hijo
 
@@ -230,9 +233,12 @@ function createCardCarrito(vehiculo) {
 
     btnEliminar.textContent = "X";
 
-// Cuando se da clic en eliminar, se borra solo este producto
+// Cuando se da clic en eliminar, se borra solo este producto y resta su valor en la suma de los totales gracias que llamamos la funcion updateTotal()
 
-    btnEliminar.addEventListener("click", () => cont.remove());
+    btnEliminar.addEventListener("click", () => {
+        cont.remove();
+        updateTotal();
+        });
 
 
 // Ensamblamos todo
@@ -244,4 +250,25 @@ function createCardCarrito(vehiculo) {
 
     return cont; // devolvemos la tarjeta completa
 }
+
+// Como queremos ver el total de lo que va a comprar el usuario realizamos la siguiente funcion la cual capturara los valores que se emcuentren en las etiquetas h2 con la clase text-success, luego separamos cada valor con un forEach luego con cada valor capturado lo convertimos en un numero decimal donde tambien reemplazamos los signos de pesos por un valor vacio y hacemos lo mismo con las "," a nivel global si es un valor numerico se sumara de no ser asi se rompe la condicion. para mostrar el valor capturamos un div en el index y modificamos el contenido y concatenamos lo que queremos mostrar que es el "Total : $ + el valor total de la suma"
+
+function updateTotal() {  
+    let total = 0;
+
+    const precios = contCarrito.querySelectorAll("h2.text-success");
+
+    precios.forEach(precio => {
+        const valor = parseFloat(precio.textContent.replace("$", "").replace(/,/g, ""));
+        if (!isNaN(valor)) {
+            total += valor;
+        }
+    });
+
+    // Mostrar el total
+    const totalDiv = document.getElementById("total_suma");
+    totalDiv.textContent = "Total = $" + total.toLocaleString("es-CL");
+}
+
+
 

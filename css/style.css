@@ -1,348 +1,207 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-    body {
-    font-family: 'Roboto', sans-serif;
-    background: #fdfdfd;
+/* ---- Estilos generales ---- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
     color: #333;
     margin: 0;
     padding: 0;
-    }
+}
 
-    :root {
-    --bg: #f8f9fa;
-    --card-bg: #ffffff;
-    --text: #212529;
-    --muted: #6c757d;
-    --primary: #0d6efd;
-    --success: #198754;
-    --danger: #dc3545;
-    --shadow: rgba(0, 0, 0, 0.08);
-    }
-
-    /* Modo oscuro */
-    .dark-mode {
-    --bg: linear-gradient(135deg, #0f0f1e, #1a1a2e 60%, #2d1b69);
-    --card-bg: #1e1e2e;
-    --text: #f1f3f5;
-    --muted: #a6a6c2;
-    --primary: #7c5cff;
-    --success: #00f0a8;
-    --danger: #ff6b6b;
-    --shadow: rgba(0, 0, 0, 0.6);
-    }
-    *{
-        scrollbar-width: none;
-    }
-    /* Estilos generales */
-    body {
-    font-family: "Roboto", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    margin: 0;
-    padding: 0;
-    transition: background 0.4s ease, color 0.4s ease;
-    }
-
-    h2 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 1rem;
-    position: relative;
-    letter-spacing: 0.5px;
-    font-size: 26px;
-    }
-
-    h2::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: var(--primary);
-    margin-top: 5px;
-    border-radius: 3px;
-    transition: width 0.3s ease;
-    }
-
-    h2:hover::after {
-    width: 70px;
-    }
-
-    /* Formulario */
-    #form {
-    background: var(--card-bg);
-    border-radius: 20px;
-    box-shadow: 0 8px 24px var(--shadow);
-    padding: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
-    }
-
-    #form:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px var(--shadow);
-    }
-
-    #form .form-control {
-    border-radius: 12px;
-    border: 1px solid #e0e0e0;
-    padding: 12px;
-    transition: all 0.3s ease;
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: 400;
-    font-size: 0.95rem;
-    }
-
-    #form .form-control:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 10px rgba(147, 197, 253, 0.4);
-    transform: scale(1.02);
-    }
-
-    /* Botón de agregar */
-    #btn-add {
-    border-radius: 12px;
-    padding: 12px 20px;
-    font-weight: 600;
-    border: none;
-    background: linear-gradient(135deg, #205c4b9f, var(--success));
-    color: #fff;
-    transition: all 0.3s ease;
-    font-family: "Roboto", sans-serif;
-    }
-
-    #btn-add:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 16px rgba(165, 180, 252, 0.4);
-    }
-
-    /* Tarjetas de vehículos */
-    .item-vehiculo .card {
-    border: none;
-    border-radius: 18px;
-    overflow: hidden;
-    background: var(--card-bg);
-    box-shadow: 0 6px 20px var(--shadow);
-    transition: all 0.3s ease, background 0.4s ease;
-    }
-
-    .item-vehiculo .card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 28px var(--shadow);
-    }
-
-    .item-vehiculo img {
-    height: 180px;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-    }
-
-    .item-vehiculo:hover img {
-    transform: scale(1.05);
-    }
-
-    /* Contenido de la tarjeta */
-    .card-body h3 {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 8px;
-    }
-
-    .card-body h4 {
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 1rem;
-    margin-bottom: 6px;
-    color: var(--muted);
-    font-weight: 400;
-    }
-
-    .card-body h2 {
-    font-family: "Roboto", sans-serif;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--success);
-    margin-top: 10px;
-    transition: transform 0.3s ease;
-    }
-
-    .card-body h2:hover {
-    transform: scale(1.08);
-    }
-
-    /* Botones dentro de tarjetas */
-    .card-body .btn {
-    border-radius: 10px;
-    font-weight: 500;
-    padding: 8px 14px;
-    transition: all 0.3s ease;
-    font-family: "Roboto Condensed", sans-serif;
-    font-size: 0.9rem;
-    }
-
-    .card-body .btn-success {
-    background: #6ee7b7;
-    border: none;
-    color: #065f46;
-    }
-
-    .card-body .btn-success:hover {
-    background: #34d399;
-    transform: translateY(-2px) scale(1.05);
-    }
-
-    .card-body .btn-danger {
-    background: #fca5a5;
-    border: none;
-    color: #7f1d1d;
-    }
-
-    .card-body .btn-danger:hover {
-    background: #f87171;
-    transform: translateY(-2px) scale(1.05);
-    }
-
-    /* Botón de cambio de modo */
-    #change-style {
+/* Botón cambio de tema */
+#change-style {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
+    top: 20px;
+    right: 20px;
+    background: #0d6efd;
+    color: white;
     border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
     cursor: pointer;
-    background: var(--primary);
-    color: #fff;
-    font-size: 1.5rem;
-    box-shadow: 0 6px 18px var(--shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease, background 0.3s ease;
-    z-index: 1000;
-    }
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
 
-    #change-style:hover {
-    transform: rotate(20deg) scale(1.1);
-    box-shadow: 0 10px 26px var(--shadow);
-    }
+#change-style:hover {
+    background: #084298;
+}
 
-    /* Botón Carrito */
-    #carrito {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+/* ---- Carrito flotante ---- */
+#carrito {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #198754;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     font-size: 22px;
-    border-radius: 50%;
-    padding: 12px 16px;
-    border: none;
-    background: var(--primary);
-    color: #fff;
     cursor: pointer;
-    box-shadow: 0 4px 8px var(--shadow);
-    transition: all 0.3s ease-in-out;
-    }
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
 
-    /* Hover */
-    #carrito:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px var(--shadow);
-    }
+#carrito:hover {
+    background: #146c43;
+}
 
-    /* Botón Carrito */
-    #carrito {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    border-radius: 50%;
-    padding: 13px 12px;
-    border: none;
-    background: var(--primary);
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 4px 8px var(--shadow);
-    transition: all 0.3s ease-in-out;
-    }
-
-    /* Hover */
-    #carrito:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px var(--shadow);
-    }
-    #carritos {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 18px;
-    border-radius: 50%;
-    padding: 13px 12px;
-    border: none;
-    background: var(--primary);
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 4px 8px var(--shadow);
-    transition: all 0.3s ease-in-out;
-    }
-
-    /* Hover */
-    #carritos:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px var(--shadow);
-    }
-
-    /* Panel lateral oculto */
-    .panel {
+/* Panel lateral del carrito */
+.panel {
     position: fixed;
     top: 0;
-    right: -400px; /* Escondido */
+    right: -350px;
     width: 350px;
-    height: 80%;
-    background: linear-gradient(200deg,#007bff, #a3aaa89f);
-    color: #fff;
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
-    transition: right 0.4s ease;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    background: white;
+    box-shadow: -4px 0px 10px rgba(0,0,0,0.3);
     padding: 20px;
-    border-radius:0 0 16px 16px;
-    }
+    transition: right 0.4s ease;
+    z-index: 999;
+    overflow-y: auto; 
+}
 
-    .panel.active {
-    right: 0; /* Se muestra */
-    }
+.panel.active {
+    right: 0;
+}
 
-    .panel h2 {
-    margin: 0;
-    font-size: 1.4rem;
+.panel h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
     font-weight: bold;
-    color: #fff;
-    text-align: center;
-    }
+}
 
-    .panel .btn {
-    align-self: flex-end;
-    margin-top: -35px;
-    margin-right: -10px;
-    }
+#carritos {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #dc3545;
+    cursor: pointer;
+}
 
-    .cont-carrito {
-    flex-grow: 1;
-    margin-top: 20px;
+.cont-carrito {
+    max-height: 80%;
     overflow-y: auto;
-    }
-    .cont-carritos {
-    flex-grow: 1;
-    margin-top: 20px;
-    overflow-y: auto;
-    }
+}
 
-    /* Estilo modo oscuro */
-    body.dark-mode .panel {
-    background: linear-gradient(135deg, #14201d9f, #2d1b69);
-    color: var(--text);
-    }
+/* ---- Formulario ---- */
+#form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
 
-    
+#form h2 {
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+/* ---- Tarjetas de vehículos ---- */
+#cont-cards h2 {
+    color: #198754;
+    font-weight: bold;
+}
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.cont-carrito {
+    max-height: none;
+    overflow-y: visible;
+}
+
+.panel .colImg img{
+    width: 100px !important;
+    height: auto !important;
+    margin-top: 20px !important;
+}
+
+/* ---- Tema oscuro ---- */
+body.dark-mode {
+    background-color: #121212;
+    color: #eaeaea;
+}
+
+/* Botón de cambio de tema */
+body.dark-mode #change-style {
+    background: #ffc107;
+    color: #212529;
+}
+
+body.dark-mode .card-carrito {
+    border-radius: 20px;
+}
+
+body .card-carrito {
+    border-radius: 20px;
+}
+
+/* Panel del carrito */
+body.dark-mode .panel {
+    background: #1e1e1e;
+    color: #f1f1f1 !important;
+    box-shadow: -4px 0px 10px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .panel h4 {
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode h4 {
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode #carritos {
+    color: #f87171;
+}
+
+/* Formulario */
+body.dark-mode #form {
+    background: #1e1e1e;
+    color: #f1f1f1;
+    box-shadow: 0px 4px 12px rgba(255,255,255,0.05);
+}
+
+body.dark-mode #form h2 {
+    color: #0d99ff;
+}
+
+/* Contenedor de cards */
+body.dark-mode #cont-cards h2 {
+    color: #4ade80;
+}
+
+body.dark-mode .card {
+    background: #2a2a2a;
+    color: #eaeaea;
+    box-shadow: 0px 4px 10px rgba(255,255,255,0.05);
+}
+
+body.dark-mode .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 14px rgba(255,255,255,0.08);
+}
