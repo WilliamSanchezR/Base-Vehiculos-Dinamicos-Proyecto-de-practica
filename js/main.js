@@ -143,6 +143,28 @@ form.addEventListener("submit", (e) => {
 
                 contCars.appendChild(newCard);
 
+        const newVehiculo = {
+            foto : vehiculo.foto,
+            nombre : vehiculo.nombre,
+            marca : vehiculo.marca,
+            modelo : vehiculo.modelo,
+            kilometraje : vehiculo.kilometraje,
+            precio : vehiculo.precio
+        }
+
+        //Capturamos el arreglo existente en el localStorage O se crea vacio si no Existe Previamente
+
+        const vehiculosGuardado = JSON.parse(localStorage.getItem("Vehiculos")) || [];
+
+        //Agregamos el arreglo de vehiculosGuardados al nuevo carritos [] dentro de la constante anterior vehiculo
+
+        vehiculosGuardado.push(newVehiculo);
+
+        //Se guarda Nuevamente en el array actualizdo
+        // Envia el item a localStorage y lo convierte en string
+
+        localStorage.setItem("Vehiculos", JSON.stringify(vehiculosGuardado));
+
         // Limpiar formulario
 
             form.reset();
@@ -248,6 +270,27 @@ function createCardCarrito(vehiculo) {
     cont.appendChild(colInfo);
     cont.appendChild(btnEliminar);
 
+    const newVehiculoCarrito = {
+        foto : vehiculo.foto,
+        nombre : vehiculo.nombre,
+        marca : vehiculo.marca,
+        modelo : vehiculo.modelo,
+        kilometraje : vehiculo.kilometraje,
+        precio : vehiculo.precio
+    }
+
+    //Agregar al localStore al agregar al carrito
+
+    const carritoCompra = JSON.parse(localStorage.getItem("carritoCompra")) || [];
+
+    //Se agrega el localStorage vehiculo
+
+    carritoCompra.push(newVehiculoCarrito)
+
+    //Para enviar el item a localStorage y lo convierte en string
+
+    localStorage.setItem("carritoCompra", JSON.stringify(carritoCompra));
+
     return cont; // devolvemos la tarjeta completa
 }
 
@@ -269,6 +312,4 @@ function updateTotal() {
     const totalDiv = document.getElementById("total_suma");
     totalDiv.textContent = "Total = $" + total.toLocaleString("es-CL");
 }
-
-
 

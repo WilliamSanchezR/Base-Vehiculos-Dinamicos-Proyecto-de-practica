@@ -1,87 +1,90 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* ---- Estilos generales ---- */
+/* --------- Estilos base --------- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
+    background: #f8f9fa;
     color: #333;
     margin: 0;
     padding: 0;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Botón cambio de tema */
-#change-style {
+/* --------- Botones flotantes --------- */
+#change-style,
+#carrito,
+#index {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #0d6efd;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-#change-style:hover {
-    background: #084298;
-}
-
-/* ---- Carrito flotante ---- */
-#carrito {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #198754;
-    color: white;
     border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 1100;
 }
 
-#carrito:hover {
-    background: #146c43;
+/* Cambio tema */
+#change-style {
+    top: 20px;
+    right: 20px;
+    background: #0d6efd;
+    color: white;
 }
 
-/* Panel lateral del carrito */
+#change-style:hover { background: #084298; }
+
+/* Botón carrito */
+#carrito {
+    bottom: 20px;
+    right: 20px;
+    background: #198754;
+    color: white;
+    font-size: 22px;
+}
+
+#carrito:hover { background: #146c43; }
+
+/* Botón index */
+#index {
+    top: 80px;
+    right: 20px;
+    background: #3498db;
+    color: #fff;
+}
+
+#index:hover { background: #2980b9; }
+
+/* --------- Panel lateral (carrito) --------- */
 .panel {
     position: fixed;
     top: 0;
     right: -350px;
     width: 350px;
     height: 100%;
-    background: white;
-    box-shadow: -4px 0px 10px rgba(0,0,0,0.3);
+    background: #fff;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.3);
     padding: 20px;
     transition: right 0.4s ease;
-    z-index: 999;
-    overflow-y: auto; 
+    z-index: 1000;
+    overflow-y: auto;
 }
 
-.panel.active {
-    right: 0;
-}
+.panel.active { right: 0; }
 
 .panel h2 {
-    margin-bottom: 20px;
     font-size: 22px;
+    margin-bottom: 15px;
     font-weight: bold;
 }
 
 #carritos {
-    position: absolute;
-    top: 15px;
-    right: 15px;
     background: transparent;
     border: none;
     font-size: 24px;
@@ -89,17 +92,12 @@ body {
     cursor: pointer;
 }
 
-.cont-carrito {
-    max-height: 80%;
-    overflow-y: auto;
-}
-
-/* ---- Formulario ---- */
+/* --------- Formulario --------- */
 #form {
-    background: white;
+    background: #fff;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 #form h2 {
@@ -107,7 +105,7 @@ body {
     font-weight: bold;
 }
 
-/* ---- Tarjetas de vehículos ---- */
+/* --------- Tarjetas de vehículos --------- */
 #cont-cards h2 {
     color: #198754;
     font-weight: bold;
@@ -116,92 +114,132 @@ body {
 .card {
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
 }
 
 .card img {
     height: 180px;
     object-fit: cover;
+    width: 100%;
 }
 
-.cont-carrito {
-    max-height: none;
-    overflow-y: visible;
+/* Contenedor general para centrar */
+.table-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
-.panel .colImg img{
-    width: 100px !important;
-    height: auto !important;
-    margin-top: 20px !important;
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #222;
 }
 
-/* ---- Tema oscuro ---- */
+/* Ajuste de la tabla */
+#carritoCompras {
+    width: 90%; /* controla el ancho de la tabla */
+    max-width: 1000px; /* límite para que no se estire demasiado */
+    margin: 0 auto; /* centrado automático */
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Encabezado */
+#carritoCompras thead {
+    background: linear-gradient(135deg, #4a90e2, #357ab7);
+    color: #fff;
+    text-align: left;
+}
+
+#carritoCompras th {
+    padding: 14px 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Filas */
+#carritoCompras td {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+#carritoCompras tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#carritoCompras tbody tr:hover {
+    background-color: #eef6ff;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Imagen dentro de la celda Foto */
+#carritoCompras td img {
+    width: 60px;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+/* --------- Tema oscuro --------- */
 body.dark-mode {
-    background-color: #121212;
+    background: #121212;
     color: #eaeaea;
 }
 
-/* Botón de cambio de tema */
 body.dark-mode #change-style {
     background: #ffc107;
     color: #212529;
 }
 
-body.dark-mode .card-carrito {
-    border-radius: 20px;
-}
+body.dark-mode #carrito { background: #16a34a; }
+body.dark-mode #index { background: #0d99ff; }
 
-body .card-carrito {
-    border-radius: 20px;
-}
-
-/* Panel del carrito */
 body.dark-mode .panel {
     background: #1e1e1e;
-    color: #f1f1f1 !important;
-    box-shadow: -4px 0px 10px rgba(0,0,0,0.6);
+    color: #f1f1f1;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.6);
 }
 
-body.dark-mode .panel h4 {
-    color: #f1f1f1 !important;
-}
-
-body.dark-mode h4 {
-    color: #f1f1f1 !important;
-}
-
-body.dark-mode #carritos {
-    color: #f87171;
-}
-
-/* Formulario */
 body.dark-mode #form {
     background: #1e1e1e;
     color: #f1f1f1;
-    box-shadow: 0px 4px 12px rgba(255,255,255,0.05);
+    box-shadow: 0 4px 12px rgba(255,255,255,0.05);
 }
 
-body.dark-mode #form h2 {
-    color: #0d99ff;
-}
+body.dark-mode #form h2 { color: #0d99ff; }
 
-/* Contenedor de cards */
-body.dark-mode #cont-cards h2 {
-    color: #4ade80;
-}
+body.dark-mode #cont-cards h2 { color: #4ade80; }
 
 body.dark-mode .card {
     background: #2a2a2a;
     color: #eaeaea;
-    box-shadow: 0px 4px 10px rgba(255,255,255,0.05);
+    box-shadow: 0 4px 10px rgba(255,255,255,0.05);
 }
 
 body.dark-mode .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 14px rgba(255,255,255,0.08);
+    box-shadow: 0 6px 14px rgba(255,255,255,0.08);
+}
+
+body.dark-mode #carritoCompras {
+    background: #1e1e1e;
+    color: #f1f1f1;
+}
+
+body.dark-mode #carritoCompras thead {
+    background: #333;
 }
